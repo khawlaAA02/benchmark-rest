@@ -1,0 +1,40 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:14
+    container_name: perf-pg
+    restart: always
+    environment:
+      POSTGRES_USER: perf
+      POSTGRES_PASSWORD: perf
+      POSTGRES_DB: perfdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: perf-grafana
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+
+  influxdb:
+    image: influxdb:2.7
+    container_name: perf-influx
+    ports:
+      - "8086:8086"
+    restart: always
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=admin
+      - DOCKER_INFLUXDB_INIT_PASSWORD=admin123
+      - DOCKER_INFLUXDB_INIT_ORG=perf
+      - DOCKER_INFLUXDB_INIT_BUCKET=jmeter
+
+volumes:
+  pgdata:
