@@ -15,16 +15,16 @@ Trois variantes ont été développées :
 
 Environnement & outils utilisés
 
-. Java 17
+- Java 17
 
-. PostgreSQL 14+
+- PostgreSQL 14+
 
-. HikariCP
+- HikariCP
 
-. JMeter (tests de charge)
+- JMeter (tests de charge)
 
 - InfluxDB v2 + Backend Listener JMeter
 
-. Prometheus + JMX Exporter
+- Prometheus + JMX Exporter
 
-. Grafana (dashboards JVM + JMeter)
+- Grafana (dashboards JVM + JMeter)
